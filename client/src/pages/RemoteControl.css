@@ -1,0 +1,268 @@
+.remote-control-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px);
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+.remote-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #444;
+}
+
+.client-info h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #4CAF50;
+}
+
+.client-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.client-details p {
+  margin: 5px 0;
+}
+
+.session-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.end-session-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.issue-analyzer {
+  background-color: #252526;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.issue-analyzer h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #2196F3;
+}
+
+.issue-input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.issue-input-group input {
+  flex: 1;
+  background-color: #333;
+  border: 1px solid #555;
+  color: #e0e0e0;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.analyze-btn {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.analyze-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.analysis-result {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #323232;
+  border-radius: 4px;
+  border-left: 4px solid #2196F3;
+}
+
+.diagnosis, .solution, .explanation {
+  margin-bottom: 10px;
+}
+
+.solution {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.solution code {
+  background-color: #1a1a1a;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-family: 'Consolas', monospace;
+  color: #9CDCFE;
+}
+
+.run-command-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.command-history {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #252526;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.welcome-message {
+  background-color: rgba(76, 175, 80, 0.1);
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 4px solid #4CAF50;
+}
+
+.welcome-message h3 {
+  margin-top: 0;
+  color: #4CAF50;
+}
+
+.welcome-message code {
+  background-color: #333;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.command-item {
+  margin-bottom: 20px;
+}
+
+.command-text {
+  color: #DCDCAA;
+  margin-bottom: 5px;
+}
+
+.command-prompt {
+  color: #4CAF50;
+  margin-right: 10px;
+}
+
+.command-result {
+  background-color: #2d2d2d;
+  padding: 10px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+}
+
+.command-result pre {
+  margin: 0;
+  font-family: 'Consolas', 'Monaco', monospace;
+  color: #9CDCFE;
+}
+
+.command-loading {
+  color: #888;
+  font-style: italic;
+  padding: 10px;
+}
+
+.ai-recommendation {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgba(33, 150, 243, 0.1);
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.ai-icon {
+  margin-right: 10px;
+  font-size: 1.5em;
+}
+
+.ai-message {
+  flex: 1;
+}
+
+.ai-message strong {
+  color: #2196F3;
+}
+
+.command-input-form {
+  display: flex;
+  align-items: center;
+  background-color: #252526;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.input-prompt {
+  color: #4CAF50;
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.command-input-form input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  color: #e0e0e0;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 16px;
+  padding: 8px 0;
+  outline: none;
+}
+
+.command-input-form input::placeholder {
+  color: #888;
+}
+
+.execute-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.execute-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.loading-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 1.2em;
+  color: #888;
+}

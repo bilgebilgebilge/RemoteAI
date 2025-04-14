@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Analiz Testi</title>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .container { margin-top: 20px; }
+        input, button { padding: 8px; margin: 5px 0; }
+        #issueInput { width: 80%; }
+        #analyzeBtn { width: 18%; }
+        #result { margin-top: 20px; padding: 15px; background-color: #f5f5f5; border-radius: 5px; }
+        pre { white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h1>AutoTech AI Analiz Testi</h1>
+    
+    <div class="container">
+        <div>
+            <input id="issueInput" type="text" placeholder="Sorununuzu yazın... (örn: Görev çubuğuna program sabitlenmiyor)" />
+            <button id="analyzeBtn">Analiz Et</button>
+        </div>
+        
+        <div id="result">
+            <p>Sonuçlar burada görünecek...</p>
+        </div>
+    </div>
+
+    <script>
+        const socket = io('http://localhost:5000');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const issueInput = document.getElementById('issueInput');
+        const resultDiv = document.getElementById('result');
+        
+        // Bağlantı durumu
+        socket.on('connect', () => {
+            console.log('Sunucuya bağlandı');
+        });
+        
+        socket.on('disconnect', () => {
+            console.log('Sunucu bağlantısı kesildi');
+        });
+        
+        // Analiz et butonu
+        analyzeBtn.addEventListener('click', () => {
+            const issue = issueInput.value;
+            if (!issue) return;
+            
+            console.log(`Analiz ediliyor: ${issue}`);
+            resultDiv.innerHTML = `<p>Analiz ediliyor: "${issue}"...</p>`;
+            
+            socket.emit('analyze_issue', {
+                sessionId: 'test-session',
+                issueDescription: issue
+            });
+        });
+        
+        // Analiz sonucu
+        socket.on('issue_analysis', (data) => {
+            console.log('Analiz sonucu alındı:', data);
+            
+            if (data && data.analysis) {
+                resultDiv.innerHTML = `
+                    <h3>Analiz Sonucu</h3>
+                    <p><strong>Tanı:</strong> ${data.analysis.diagnosis}</p>
+                    <p><strong>Çözüm:</strong> <code>${data.analysis.solution}</code></p>
+                    <p><strong>Açıklama:</strong> ${data.analysis.explanation}</p>
+                `;
+            } else {
+                resultDiv.innerHTML = `<p>Bir hata oluştu. Sunucu yanıt vermedi.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
